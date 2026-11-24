@@ -21,7 +21,7 @@ Une bibliothèque numérique où les étudiants de l'ENEAM déposent leur mémoi
 | Service examen | Programme la date de soutenance |
 | Bibliothécaire | Rend les mémoires publics et consulte les statistiques de lecture |
 | Administrateur | Gère les utilisateurs, les filières et les années académiques |
-| Lecteur | Tout étudiant connecté qui parcourt le catalogue |
+| Lecteur | Toute personne non connectée qui parcourt le catalogue |
 
 ## Inscription et connexion
 
@@ -84,20 +84,12 @@ Une fois connecté, c'est le rôle de la personne qui décide de ce qu'elle voit
 - MySQL
 - PDF.js pour la lecture en ligne
 
-## Installation
-
-```bash
-git clone <url-du-depot>
-cd sgm-eneam
-composer install
-cp .env.example .env
-php artisan key:generate
-php artisan migrate --seed
-php artisan serve
 ```
 
 Pense à renseigner la base de données dans le fichier `.env` avant de lancer `migrate`.
 
 ## Équipe
 
-- À compléter
+- [FIODEKANHOUN Belmonde](https://github.com/Bel-bg) - [Rôle]
+- [AKONDE Daniel](https://github.com/Danielak-gif) - [Rôle]
+- [DJIVOH Onacisse](https://github.com/Onacisse) - [Rôle]
