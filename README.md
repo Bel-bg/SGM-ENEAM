@@ -73,11 +73,6 @@ Une fois connecté, c'est le rôle de la personne qui décide de ce qu'elle voit
 - **Fichiers** : le format et la taille des PDF sont contrôlés au dépôt.
 - **Désactiver le téléchargement** réduit l'usage, mais ne protège pas complètement le fichier. À savoir pour ne pas promettre plus que ce que le système fait.
 
-## À trancher
-
-- L'encadreur est-il toujours un enseignant de l'ENEAM (avec un compte), ou peut-il être externe ?
-- D'où viennent réellement les données des étudiants : export fourni par l'ENEAM, ou jeu de données de test ?
-
 ## Stack technique
 
 - Laravel
