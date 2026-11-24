@@ -1,58 +1,103 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SGM-ENEAM
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Système de Gestion des Mémoires de l'ENEAM**
 
-## About Laravel
+Une bibliothèque numérique où les étudiants de l'ENEAM déposent leur mémoire, le font valider, puis le rendent consultable en ligne par les autres étudiants.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Objectifs
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Centraliser les mémoires au même endroit, au lieu de les laisser dispersés en papier ou sur des clés USB.
+- Encadrer chaque mémoire par un circuit de validation clair avant toute publication.
+- Permettre aux étudiants de chercher et lire les mémoires existants depuis leur navigateur.
+- Donner à l'administration une vue sur ce qui est déposé, validé et consulté.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Acteurs
 
-## Learning Laravel
+| Acteur | Ce qu'il fait |
+|---|---|
+| Étudiant | Dépose son mémoire (titre, résumé, mots-clés, filière, année, encadreur, PDF) et suit son avancement |
+| Chef de département | Assigne un encadreur, vérifie le taux de plagiat, valide ou rejette un mémoire |
+| Encadreur | Suit le mémoire et laisse un commentaire à chaque version déposée |
+| Service examen | Programme la date de soutenance |
+| Bibliothécaire | Rend les mémoires publics et consulte les statistiques de lecture |
+| Administrateur | Gère les utilisateurs, les filières et les années académiques |
+| Lecteur | Tout étudiant connecté qui parcourt le catalogue |
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Inscription et connexion
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Tout le monde se connecte au même endroit, avec son **email et son mot de passe**. Ce qui change, c'est la façon d'obtenir son compte.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+**Étudiant : activation par matricule.** On part du principe que l'ENEAM possède déjà les données de ses étudiants (une table de référence). L'étudiant n'invente donc rien, il active un compte qui existe déjà :
 
-## Agentic Development
+1. Il saisit son matricule.
+2. Le système affiche ses informations (email masqué) pour qu'il confirme que c'est bien lui.
+3. Un code de vérification est envoyé par mail.
+4. Il saisit le code, puis choisit son mot de passe.
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+**Personnel : invitation par l'administrateur.** Le chef de département, le service examen, le bibliothécaire et l'encadreur n'ont pas de matricule étudiant. L'administrateur crée leur compte et ils reçoivent un mail pour choisir leur mot de passe.
+
+Une fois connecté, c'est le rôle de la personne qui décide de ce qu'elle voit. Un même membre du personnel peut avoir plusieurs rôles (un chef de département est souvent aussi encadreur).
+
+## Le parcours d'un mémoire
+
+1. L'étudiant dépose son mémoire. Statut : **soumis**.
+2. Le chef de département assigne un encadreur.
+3. L'encadreur suit le travail. À chaque nouvelle version, il laisse un commentaire. Statut : **en cours de vérification**.
+4. Le chef de département consulte le taux de plagiat, puis décide :
+   - **validé**, le mémoire peut avancer ;
+   - **rejeté**, avec un motif obligatoire.
+5. Dans les deux cas, l'étudiant est notifié.
+6. Le service examen programme la date de soutenance.
+7. Le bibliothécaire rend le mémoire public. Il apparaît alors dans le catalogue.
+
+## Fonctionnalités
+
+**De base**
+- Activation de compte étudiant par matricule
+- Dépôt de mémoire avec fichier PDF
+- Circuit de validation avec notification
+- Catalogue interne : liste, fiche détaillée, recherche par titre, auteur, mot-clé, filière et année
+- Lecture en ligne dans le navigateur (PDF.js), téléchargement désactivable
+- Gestion des utilisateurs, des filières et des années académiques
+
+**Avancées (bonus)**
+- Recherche plein texte (MySQL FULLTEXT)
+- Détection de doublons et de plagiat simplifié (comparaison des titres et des résumés)
+- Statistiques de consultation et mémoires les plus lus
+- Favoris et historique de lecture
+- Embargo : un mémoire n'est visible qu'après une date donnée
+
+## Points d'attention
+
+- **Droits d'auteur et confidentialité** : certains mémoires peuvent être en accès restreint.
+- **Fichiers** : le format et la taille des PDF sont contrôlés au dépôt.
+- **Désactiver le téléchargement** réduit l'usage, mais ne protège pas complètement le fichier. À savoir pour ne pas promettre plus que ce que le système fait.
+
+## À trancher
+
+- L'encadreur est-il toujours un enseignant de l'ENEAM (avec un compte), ou peut-il être externe ?
+- D'où viennent réellement les données des étudiants : export fourni par l'ENEAM, ou jeu de données de test ?
+
+## Stack technique
+
+- Laravel
+- MySQL
+- PDF.js pour la lecture en ligne
+
+## Installation
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone <url-du-depot>
+cd sgm-eneam
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate --seed
+php artisan serve
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Pense à renseigner la base de données dans le fichier `.env` avant de lancer `migrate`.
 
-## Contributing
+## Équipe
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- À compléter
