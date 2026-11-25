@@ -2,37 +2,38 @@
 
 :root {
   /* Fonds */
-  --fond-page: #ffffff;        /* corps de la page */
-  --fond-bandeau: #faf9f5;     /* barre de navigation et pied de page (blanc cassé chaud) */
+  --fond-page: #f9fafb;        /* corps de la page (gris très clair) */
+  --fond-bandeau: #ffffff;     /* barre de navigation */
+  --fond-section: #e4e6ea;     /* grand bloc gris, type "Liens rapides" */
 
   /* Textes */
-  --texte-titre: #151515;      /* titres */
-  --texte: #2c2c2c;            /* texte courant, liens, pied de page */
-  --texte-sur-fonce: #ffffff;  /* texte sur bouton vert ou fond noir */
+  --texte-titre: #242d3a;      /* titres et nom de l'établissement */
+  --texte: #3a4352;            /* texte courant, menu de navigation */
+  --texte-discret: #64738a;    /* messages vides, informations secondaires */
+  --texte-sur-fonce: #ffffff;  /* texte sur bouton bleu ou carte bleue */
 
   /* Bordures et séparateurs */
-  --bordure-bandeau: #dddddd;  /* trait sous la barre de navigation */
-  --separateur: #cbcbcb;       /* lignes entre les blocs, séparateur du pied de page */
-  --bordure-champ: #747474;    /* contour du champ de recherche */
+  --bordure-bandeau: #e9ecf7;  /* trait sous la barre de navigation */
+  --bordure-pointillee: #cad4e0; /* cadre en pointillés des blocs vides */
 
-  /* Actions */
-  --vert: #118549;             /* bouton principal */
-  --vert-survol: #0d6b3a;      /* survol du bouton principal (dérivé, absent de la capture) */
+  /* Bleu */
+  --bleu: #2342ae;             /* cartes, titres de section */
+  --bleu-bouton: #2a52c0;      /* bouton principal */
+  --bleu-survol: #1c378f;      /* survol (dérivé, absent de la capture) */
 
-  /* Accents */
-  --bleu: #0066ff;             /* petite icône bleue du pied de page */
-  --noir: #000000;             /* badges des boutons de téléchargement */
+  /* Accent */
+  --jaune: #facf24;            /* icônes sur fond bleu uniquement */
 
-  /* Typographie (pile système, la police de Scribd est propriétaire) */
+  /* Typographie (le titre ressemble à du Montserrat, à confirmer avec Inspecter) */
   --police: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --police-titre: "Montserrat", var(--police);
 
-  /* Dimensions repérées sur la capture */
-  --largeur-max: 1200px;       /* contenu centré de la barre et du pied de page */
-  --largeur-texte: 1000px;     /* colonne étroite des blocs de texte */
-  --rayon: 6px;                /* coins des boutons et du champ de recherche */
+  /* Dimensions */
+  --largeur-max: 1200px;       /* contenu centré de la barre de navigation */
+  --rayon: 6px;                /* coins des boutons et des cartes */
 }
 
-/* Base */
+/* Base ----------------------------------------------------------------- */
 
 *,
 *::before,
@@ -57,6 +58,7 @@ h1,
 h2,
 h3 {
   color: var(--texte-titre);
+  font-family: var(--police-titre);
   line-height: 1.2;
 }
 
