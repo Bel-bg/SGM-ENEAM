@@ -68,7 +68,7 @@
                     
             @if (request()->routeIs('catalogue-index'))
                 <a href="#" class="btn-principal">Je suis Etudiant</a>
-            @elseif (request()->routeIs('landing.index'))
+            @elseif (request()->routeIs('landing-index'))
                 <a href="{{ route('register') }}" class="btn-principal">Espace Etudiant</a>
             @endif
         </nav>
