@@ -2,11 +2,12 @@
             <div class="navbar-conteneur">
                 <!-- Logo -->
                 <img
-                    src="../assets/blank_background.png"
-                    class="navbar-logo"
-                    width="300"
-                    height="50"
-                />
+    src="{{ asset('assets/blank_background.png') }}"
+    class="navbar-logo"
+    width="300"
+    height="50"
+/>
+
 
                 <!-- Barre de recherche -->
                 <form class="navbar-recherche" action="#" method="get">
@@ -40,12 +41,34 @@
                     <a href="#" class="navbar-lien">
                         <span>Comment ça marche ?</span>
                     </a>
+            @if (Route::has('login'))
+                <nav class="flex items-center justify-end gap-4">
+                    @auth
+                        <a
+                            href="{{ url('/dashboard') }}"
+                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
+                        >
+                            Dashboard
+                        </a>
+                    @else
+                        <!-- <a
+                            href="{{ route('login') }}"
+                            class="btn-principal"
+                        >
+                            Se Connecter
+                        </a> -->
 
-                    <a href="#" class="navbar-lien">
-                        <span>Se Connecter</span>
-                    </a>
-
-                    <a href="#" class="btn-principal">Je suis Etudiant</a>
+                        @if (Route::has('register'))
+                            <a
+                                href="{{ route('register') }}"
+                                class="btn-principal"
+                                >
+                                Espace Etudiant
+                            </a>
+                        @endif
+                    @endauth
+                </nav>
+            @endif
                 </nav>
             </div>
         </header>
