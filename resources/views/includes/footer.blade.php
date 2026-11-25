@@ -55,6 +55,7 @@
                                 >
                             </li>
                             <li><a href="#">Localisation</a></li>
+                            <li><a href="{{ route('login') }}" >Espace Administration</a></li>
                         </ul>
                     </div>
                 </div>
