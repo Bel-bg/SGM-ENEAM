@@ -4,7 +4,7 @@
         <title>
             [SGM-ENEAM | Retrouver toute l'archive des mémoire de l'ENEAM
         </title>
-        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 
     @vite(['resources/css/style.css'])
         <link

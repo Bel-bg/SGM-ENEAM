@@ -32,7 +32,6 @@
                         </svg>
                     </button>
                 </form>
-
                 <!-- Actions à droite -->
                 <nav class="navbar-actions">
                     <a href="./catalogue.html" class="navbar-lien">
@@ -41,34 +40,19 @@
                     <a href="#" class="navbar-lien">
                         <span>Comment ça marche ?</span>
                     </a>
-            @if (Route::has('login'))
-                <nav class="flex items-center justify-end gap-4">
+
                     @auth
-                        <a
-                            href="{{ url('/dashboard') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
-                        >
+                        <a href="{{ route('dashboard') }}" class="btn-principal">
                             Dashboard
                         </a>
                     @else
-                        <!-- <a
-                            href="{{ route('login') }}"
-                            class="btn-principal"
-                        >
-                            Se Connecter
-                        </a> -->
-
-                        @if (Route::has('register'))
-                            <a
-                                href="{{ route('register') }}"
-                                class="btn-principal"
-                                >
-                                Espace Etudiant
+                        @if (Route::has('etudiant.login'))
+                            <a href="{{ route('etudiant.login') }}" class="btn-principal">
+                                Espace Étudiant
                             </a>
                         @endif
                     @endauth
                 </nav>
-            @endif
-                </nav>
+
             </div>
         </header>
