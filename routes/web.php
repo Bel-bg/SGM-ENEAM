@@ -8,23 +8,27 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', function () {
     return view('landing.index');
-})->name('home');
+})->name('landing-index');
 
-/*Authentification Étudiant (Invités uniquement)
-*/
-Route::middleware('guest')->prefix('etudiant')->name('etudiant.')->group(function () {
-    // Étape 1 : Saisie du matricule
-    Route::get('/login', [EtudiantAuthController::class, 'showLoginForm'])->name('login');
-    Route::post('/login', [EtudiantAuthController::class, 'sendOtp'])->name('send-otp');
+Route::get('catalogue', function() {
+    return view('catalogue.index');
+})->name('catalogue-index');
+
+Route::get('catalogue/details', function() {
+    return view('catalogue.details');
+})->name('catalogue-details');
 
     // Étape 2 : Saisie du code de vérification (OTP)
     Route::get('/verify-otp', [EtudiantAuthController::class, 'showOtpForm'])->name('otp.form');
     Route::post('/verify-otp', [EtudiantAuthController::class, 'verifyOtp'])->name('otp.verify');
 });
 
-/*
-| Espace Connecté (Étudiants & Administration)
-*/
+Route::middleware('guest')->group(function () {
+    Route::get('/login', function () {
+        return view('auth.login');
+    })->name('login');
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
