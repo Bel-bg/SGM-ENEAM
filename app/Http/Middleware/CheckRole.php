@@ -6,15 +6,21 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdministrateurMiddleware
+class CheckRole
 {
     /**
      * Handle an incoming request.
      *
      * @param  Closure(Request): (Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, string ...$roles): Response
     {
+        $user = $request->user();
+
+        if (!$user || !$user->hasAnyRole($roles)) {
+            abort(403, 'Accès non autorisé pour votre profil.');
+        }
+
         return $next($request);
     }
 }
