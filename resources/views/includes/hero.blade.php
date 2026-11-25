@@ -3,20 +3,21 @@
                 <div class="hero-visuel">
                     <div class="hero-img-principale">
                         <img
-                            src="../assets/eneam.webp"
+    src="{{ asset('assets/eneam.webp') }}"
                             alt="Foule dans un escalier"
                         />
                         <span class="hero-logo">[SGM]-ENEAM</span>
                     </div>
                     <div class="hero-img-secondaire">
                         <img
-                            src="../assets/soutenance.jpeg"
-                            alt="Peinture de grues"
+    src="{{ asset('assets/soutenance.jpeg') }}"
+                            alt="soutenances"
                         />
                     </div>
                     <div class="hero-img-secondaire">
                         <img
-                            src="../assets/biblio.webp"
+                            
+    src="{{ asset('assets/biblio.webp') }}"
                             alt="Formules mathématiques sur tableau"
                         />
                     </div>
