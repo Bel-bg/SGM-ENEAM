@@ -70,7 +70,7 @@
                     </a>
 
                     <div class="doc-infos">
-                        <div class="doc-stats">N° 1 • 650 vues • 95 pages • Ingénieur Statisticien (ISE)</div>
+                        <div class="doc-stats">650 vues • 95 pages • Ingénieur Statisticien (ISE)</div>
 
                         <h3 class="doc-titre">
                             <a href="./detail.html">Modélisation économétrique de l'inflation et croissance économique dans l'espace UEMOA</a>
@@ -81,23 +81,7 @@
                         </p>
                     </div>
 
-                    <div class="doc-actions">
-                        <button
-                            type="button"
-                            class="doc-action-btn"
-                            aria-label="Télécharger"
-                        >
-                            <i class="bi bi-download"></i>
-                        </button>
-
-                        <button
-                            type="button"
-                            class="doc-action-btn"
-                            aria-label="Enregistrer"
-                        >
-                            <i class="bi bi-bookmark"></i>
-                        </button>
-                    </div>
+                    
                 </article>
             </li>
 
@@ -112,7 +96,7 @@
                     </a>
 
                     <div class="doc-infos">
-                        <div class="doc-stats">N° 2 • 489 vues • 82 pages • Master (GFC)</div>
+                        <div class="doc-stats">489 vues • 82 pages • Master (GFC)</div>
 
                         <h3 class="doc-titre">
                             <a href="./detail.html">Analyse de l'impact du digital banking sur la performance des banques commerciales au Bénin</a>
@@ -123,23 +107,7 @@
                         </p>
                     </div>
 
-                    <div class="doc-actions">
-                        <button
-                            type="button"
-                            class="doc-action-btn"
-                            aria-label="Télécharger"
-                        >
-                            <i class="bi bi-download"></i>
-                        </button>
-
-                        <button
-                            type="button"
-                            class="doc-action-btn"
-                            aria-label="Enregistrer"
-                        >
-                            <i class="bi bi-bookmark"></i>
-                        </button>
-                    </div>
+                    
                 </article>
             </li>
 
@@ -154,7 +122,7 @@
                     </a>
 
                     <div class="doc-infos">
-                        <div class="doc-stats">N° 3 • 312 vues • 74 pages • Licence Pro (GTL)</div>
+                        <div class="doc-stats">312 vues • 74 pages • Licence Pro (GTL)</div>
 
                         <h3 class="doc-titre">
                             <a href="./detail.html">Optimisation de la chaîne logistique portuaire et dématérialisation des procédures au Port Autonome de Cotonou</a>
@@ -165,23 +133,7 @@
                         </p>
                     </div>
 
-                    <div class="doc-actions">
-                        <button
-                            type="button"
-                            class="doc-action-btn"
-                            aria-label="Télécharger"
-                        >
-                            <i class="bi bi-download"></i>
-                        </button>
-
-                        <button
-                            type="button"
-                            class="doc-action-btn"
-                            aria-label="Enregistrer"
-                        >
-                            <i class="bi bi-bookmark"></i>
-                        </button>
-                    </div>
+                    
                 </article>
             </li>
 
@@ -196,7 +148,7 @@
                     </a>
 
                     <div class="doc-infos">
-                        <div class="doc-stats">N° 4 • 214 vues • 68 pages • Licence Pro (IG)</div>
+                        <div class="doc-stats">214 vues • 68 pages • Licence Pro (IG)</div>
 
                         <h3 class="doc-titre">
                             <a href="./detail.html">Conception et réalisation d'un système numérique d'archivage des mémoires de l'ENEAM</a>
@@ -207,23 +159,7 @@
                         </p>
                     </div>
 
-                    <div class="doc-actions">
-                        <button
-                            type="button"
-                            class="doc-action-btn"
-                            aria-label="Télécharger"
-                        >
-                            <i class="bi bi-download"></i>
-                        </button>
-
-                        <button
-                            type="button"
-                            class="doc-action-btn"
-                            aria-label="Enregistrer"
-                        >
-                            <i class="bi bi-bookmark"></i>
-                        </button>
-                    </div>
+                    
                 </article>
             </li>
 
@@ -238,7 +174,7 @@
                     </a>
 
                     <div class="doc-infos">
-                        <div class="doc-stats">N° 5 • 168 vues • 71 pages • Licence Pro (GRH)</div>
+                        <div class="doc-stats">168 vues • 71 pages • Licence Pro (GRH)</div>
 
                         <h3 class="doc-titre">
                             <a href="./detail.html">Titre du cinquième mémoire (exemple à remplacer)</a>
@@ -249,23 +185,7 @@
                         </p>
                     </div>
 
-                    <div class="doc-actions">
-                        <button
-                            type="button"
-                            class="doc-action-btn"
-                            aria-label="Télécharger"
-                        >
-                            <i class="bi bi-download"></i>
-                        </button>
-
-                        <button
-                            type="button"
-                            class="doc-action-btn"
-                            aria-label="Enregistrer"
-                        >
-                            <i class="bi bi-bookmark"></i>
-                        </button>
-                    </div>
+                    
                 </article>
             </li>
         </ol>
