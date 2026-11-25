@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            [SGM]-ENEAM | Retrouver toute l'archive des mémoires de l'ENEAM
+        </title>
+
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+        <!-- Barre de navigation -->
+        <header class="navbar">
+            <div class="navbar-conteneur">
+                <img
+                    src="../assets/blank_background.png"
+                    class="navbar-logo"
+                    width="300"
+                    height="50"
+                    alt="[SGM]-ENEAM"
+                />
+
+                <form class="navbar-recherche" action="#" method="get">
+                    <input
+                        type="search"
+                        placeholder="Trouver un mémoire"
+                        aria-label="Trouver un mémoire"
+                    />
+                    <button type="submit" aria-label="Rechercher">
+                        <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                </form>
+
+                <nav class="navbar-actions">
+                    <a href="./catalogue.html" class="navbar-lien">
+                        <span>Catalogue</span>
+                    </a>
+
+                    <a href="#" class="navbar-lien">
+                        <span>Comment ça marche ?</span>
+                    </a>
+
+                    <a href="#" class="navbar-lien">
+                        <span>Se Connecter</span>
+                    </a>
+
+                    <a href="#" class="btn-principal">Je suis Etudiant</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Contenu principal -->
+        <main class="recherche-page">
+            <div class="recherche-conteneur">
+                <!-- Filtres -->
+                <aside class="filtres-sidebar">
+                    <div class="filtres-entete">
+                        <span class="filtres-titre">Filtrer par</span>
+                        <button type="button" class="btn-effacer">
+                            Tout effacer
+                        </button>
+                    </div>
+
+                    <div class="filtres-groupe">
+                        <button type="button" class="filtre-select">
+                            <span>Année (2025 - 2026)</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+
+                        <button type="button" class="filtre-select">
+                            <span>Cycle (Licence / Master)</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+
+                        <button type="button" class="filtre-select">
+                            <span>Département</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+
+                        <button type="button" class="filtre-select">
+                            <span>Mention / Note</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+
+                        <button type="button" class="filtre-select">
+                            <span>Langue</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+                    </div>
+
+                    <div class="filtres-categories">
+                        <span class="filtres-sous-titre"
+                            >Afficher par filière</span
+                        >
+
+                        <div class="categories-liste">
+                            <button type="button" class="categorie-btn">
+                                Informatique de Gestion (IG)
+                            </button>
+                            <button type="button" class="categorie-btn">
+                                Statistique (ISE / ITS)
+                            </button>
+                            <button type="button" class="categorie-btn">
+                                Planification du Développement
+                            </button>
+                            <button type="button" class="categorie-btn">
+                                Gestion Financière et Comptable
+                            </button>
+                            <button type="button" class="categorie-btn">
+                                Gestion des Banques et Assurances
+                            </button>
+                            <button type="button" class="categorie-btn">
+                                Gestion Commerciale
+                            </button>
+                            <button type="button" class="categorie-btn">
+                                Transport et Logistique
+                            </button>
+                            <button type="button" class="categorie-btn">
+                                Gestion des Ressources Humaines
+                            </button>
+                            <button type="button" class="categorie-btn">
+                                DECOGEF / DESCOGEF
+                            </button>
+                            <button type="button" class="categorie-btn">
+                                Contrôle de Gestion et Audit
+                            </button>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Résultats -->
+                <section class="resultats-contenu">
+                    <div class="barre-test-local">
+                    </div>
+
+                    <!-- En-tête -->
+                    <div class="resultats-entete">
+                        <h1 class="resultats-compteur">
+                            1 428 mémoires et thèses trouvés à l’ENEAM
+                        </h1>
+
+                        <div
+                            class="affichage-modes"
+                            role="group"
+                            aria-label="Mode d'affichage"
+                        >
+                            <button
+                                type="button"
+                                class="mode-btn actif"
+                                aria-label="Affichage en liste"
+                            >
+                                <i class="bi bi-list-ul"></i>
+                            </button>
+
+                            <button
+                                type="button"
+                                class="mode-btn"
+                                aria-label="Affichage en grille"
+                            >
+                                <i class="bi bi-grid"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Liste des mémoires -->
+                    <div class="documents-liste">
+                        <!-- Mémoire 1 -->
+                        <article class="doc-carte">
+                            <a
+                                href="./detail.html"
+                                class="doc-miniature"
+                                target="_blank"
+                            >
+                                <span class="doc-badge">PDF</span>
+                                <canvas
+                                    class="pdf-couverture"
+                                    data-pdf="docs/main.pdf"
+                                ></canvas>
+                            </a>
+
+                            <div class="doc-infos">
+                                <div class="doc-stats">
+                                    214 vues • 68 pages • Licence Pro (IG)
+                                </div>
+
+                                <h2 class="doc-titre">
+                                    <a href="./detail.html" target="_blank">
+                                        Conception et réalisation d'un système
+                                        numérique d'archivage des mémoires de
+                                        l'ENEAM
+                                    </a>
+                                </h2>
+
+                                <p class="doc-auteur">
+                                    Soutenu par
+                                    <a href="#">Belmonde Fiodekanhoun</a> •
+                                    Promotion 2025-2026
+                                </p>
+                            </div>
+
+                            <div class="doc-actions">
+                                <button
+                                    type="button"
+                                    class="doc-action-btn"
+                                    aria-label="Télécharger"
+                                >
+                                    <i class="bi bi-download"></i>
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="doc-action-btn"
+                                    aria-label="Enregistrer"
+                                >
+                                    <i class="bi bi-bookmark"></i>
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- Mémoire 2 -->
+                        <article class="doc-carte">
+                            <a
+                                href="./detail.html"
+                                class="doc-miniature"
+                                target="_blank"
+                            >
+                                <span class="doc-badge">PDF</span>
+                                <canvas
+                                    class="pdf-couverture"
+                                    data-pdf="docs/main.pdf"
+                                ></canvas>
+                            </a>
+
+                            <div class="doc-infos">
+                                <div class="doc-stats">
+                                    489 vues • 82 pages • Master (GFC)
+                                </div>
+
+                                <h2 class="doc-titre">
+                                    <a href="./detail.html" target="_blank">
+                                        Analyse de l'impact du digital banking
+                                        sur la performance des banques
+                                        commerciales au Bénin
+                                    </a>
+                                </h2>
+
+                                <p class="doc-extrait">
+                                    Ce mémoire étudie l'adoption des services
+                                    financiers numériques et du Mobile Money par
+                                    les établissements bancaires de la place de
+                                    Cotonou, en évaluant leur rentabilité
+                                    opérationnelle...
+                                </p>
+
+                                <p class="doc-auteur">
+                                    Soutenu par <a href="#">Koffi Mensah</a> •
+                                    Sous la direction de Dr. Maurice Comlan
+                                    (Octobre 2025)
+                                </p>
+                            </div>
+
+                            <div class="doc-actions">
+                                <button
+                                    type="button"
+                                    class="doc-action-btn"
+                                    aria-label="Télécharger"
+                                >
+                                    <i class="bi bi-download"></i>
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="doc-action-btn"
+                                    aria-label="Enregistrer"
+                                >
+                                    <i class="bi bi-bookmark"></i>
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- Mémoire 3 -->
+                        <article class="doc-carte">
+                            <a
+                                href="./detail.html"
+                                class="doc-miniature"
+                                target="_blank"
+                            >
+                                <span class="doc-badge">PDF</span>
+                                <canvas
+                                    class="pdf-couverture"
+                                    data-pdf="docs/main.pdf"
+                                ></canvas>
+                            </a>
+
+                            <div class="doc-infos">
+                                <div class="doc-stats">
+                                    312 vues • 74 pages • Licence Pro (GTL)
+                                </div>
+
+                                <h2 class="doc-titre">
+                                    <a href="./detail.html" target="_blank">
+                                        Optimisation de la chaîne logistique
+                                        portuaire et dématérialisation des
+                                        procédures au Port Autonome de Cotonou
+                                    </a>
+                                </h2>
+
+                                <p class="doc-auteur">
+                                    Soutenu par <a href="#">Aïcha Dossou</a> •
+                                    Promotion 2024-2025
+                                </p>
+                            </div>
+
+                            <div class="doc-actions">
+                                <button
+                                    type="button"
+                                    class="doc-action-btn"
+                                    aria-label="Télécharger"
+                                >
+                                    <i class="bi bi-download"></i>
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="doc-action-btn"
+                                    aria-label="Enregistrer"
+                                >
+                                    <i class="bi bi-bookmark"></i>
+                                </button>
+                            </div>
+                        </article>
+
+                        <!-- Mémoire 4 -->
+                        <article class="doc-carte">
+                            <a
+                                href="./detail.html"
+                                class="doc-miniature"
+                                target="_blank"
+                            >
+                                <span class="doc-badge">PDF</span>
+                                <canvas
+                                    class="pdf-couverture"
+                                    data-pdf="docs/main.pdf"
+                                ></canvas>
+                            </a>
+
+                            <div class="doc-infos">
+                                <div class="doc-stats">
+                                    650 vues • 95 pages • Ingénieur Statisticien
+                                    (ISE)
+                                </div>
+
+                                <h2 class="doc-titre">
+                                    <a href="./detail.html" target="_blank">
+                                        Modélisation économétrique de
+                                        l'inflation et croissance économique
+                                        dans l'espace UEMOA
+                                    </a>
+                                </h2>
+
+                                <p class="doc-auteur">
+                                    Soutenu par
+                                    <a href="#">Sègbégnon Houngbédji</a> •
+                                    Bibliothèque ENEAM Gbégamey (2024)
+                                </p>
+                            </div>
+
+                            <div class="doc-actions">
+                                <button
+                                    type="button"
+                                    class="doc-action-btn"
+                                    aria-label="Télécharger"
+                                >
+                                    <i class="bi bi-download"></i>
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="doc-action-btn"
+                                    aria-label="Enregistrer"
+                                >
+                                    <i class="bi bi-bookmark"></i>
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Pied de page -->
+        <footer class="footer">
+            <div class="footer-conteneur">
+                <div class="footer-colonnes">
+                    <div class="footer-col">
+                        <h3>ENEAM</h3>
+                        <ul>
+                            <li><a href="#">Historique</a></li>
+                            <li><a href="#">Mission</a></li>
+                            <li><a href="#">Administration</a></li>
+                            <li><a href="#">Les départements</a></li>
+                            <li><a href="#">Bibliothèque</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h3>LIENS RAPIDES</h3>
+                        <ul>
+                            <li><a href="#">Cream</a></li>
+                            <li><a href="#">Publications</a></li>
+                            <li><a href="#">Doctorants</a></li>
+                            <li><a href="#">Frais de mémoires</a></li>
+                            <li><a href="#">Dépôt de mémoires</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h3>AUTRES LIENS</h3>
+                        <ul>
+                            <li><a href="#">UAC</a></li>
+                            <li><a href="#">Club des Alumni</a></li>
+                            <li><a href="#">E-learning</a></li>
+                            <li><a href="#">Nos partenaires</a></li>
+                            <li><a href="#">Bue &amp; Bcs</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h3>CONTACTS</h3>
+                        <ul>
+                            <li>03BP 1079 - Gbégamey</li>
+                            <li>Cotonou - Bénin</li>
+                            <li>
+                                <a href="tel:+22921304168"
+                                    >Tél : +229-21-30-41-68</a
+                                >
+                            </li>
+                            <li>
+                                <a href="mailto:eneam.uac@eneam.uac.bj"
+                                    >Email : eneam.uac@eneam.uac.bj</a
+                                >
+                            </li>
+                            <li><a href="#">Localisation</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-bas">
+                    <div class="footer-reseaux">
+                        <p class="footer-reseaux-titre">
+                            Suivez-nous sur les réseaux sociaux !
+                        </p>
+
+                        <div class="footer-icones">
+                            <a href="#" aria-label="Facebook ENEAM"
+                                ><i class="bi bi-facebook"></i
+                            ></a>
+                            <a href="#" aria-label="Instagram ENEAM"
+                                ><i class="bi bi-instagram"></i
+                            ></a>
+                            <a href="#" aria-label="Twitter ENEAM"
+                                ><i class="bi bi-twitter-x"></i
+                            ></a>
+                        </div>
+                    </div>
+
+                    <p class="footer-copyright">
+                        © 2026 | [SGM]-ENEAM | Tous droits réservés.
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- PDF.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+        <script>
+            // Configuration du Worker PDF.js
+            pdfjsLib.GlobalWorkerOptions.workerSrc =
+                "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+            // Conservation des URL temporaires pour éviter leur révocation prématurée
+            let urlPdfLocal = null;
+
+            // Dessiner la première page d'un PDF
+            async function dessinerCouverture(sourcePdf, canvas) {
+                try {
+                    const loadingTask = pdfjsLib.getDocument(sourcePdf);
+                    const pdf = await loadingTask.promise;
+
+                    const page = await pdf.getPage(1);
+
+                    // Dimensions disponibles
+                    const conteneur = canvas.parentElement;
+                    const largeur = conteneur.clientWidth || 192;
+
+                    // Calcul automatique du facteur d'échelle
+                    const viewportInitial = page.getViewport({ scale: 1 });
+                    const scale = largeur / viewportInitial.width;
+
+                    const viewport = page.getViewport({ scale });
+
+                    canvas.width = Math.floor(viewport.width);
+                    canvas.height = Math.floor(viewport.height);
+
+                    const contexte = canvas.getContext("2d");
+
+                    await page.render({
+                        canvasContext: contexte,
+                        viewport: viewport,
+                    }).promise;
+
+                    console.log("Couverture PDF affichée :", sourcePdf);
+                } catch (erreur) {
+                    console.error("Impossible de charger le PDF :", erreur);
+
+                    const ctx = canvas.getContext("2d");
+
+                    canvas.width = 192;
+                    canvas.height = 256;
+
+                    ctx.fillStyle = "#faf9f5";
+                    ctx.fillRect(0, 0, 192, 256);
+
+                    ctx.fillStyle = "#118549";
+                    ctx.fillRect(0, 42, 192, 6);
+
+                    ctx.fillStyle = "#151515";
+                    ctx.font = "bold 14px sans-serif";
+                    ctx.fillText("MÉMOIRE ENEAM", 24, 92);
+
+                    ctx.fillStyle = "#747474";
+                    ctx.font = "11px sans-serif";
+                    ctx.fillText("PDF indisponible", 24, 128);
+                }
+            }
+
+            // Chargement des PDF présents dans le catalogue
+            document.addEventListener("DOMContentLoaded", () => {
+                document
+                    .querySelectorAll(".pdf-couverture")
+                    .forEach((canvas) => {
+                        dessinerCouverture(canvas.dataset.pdf, canvas);
+                    });
+            });
+
+            // Chargement d'un PDF depuis l'ordinateur
+            document
+                .getElementById("input-pdf-local")
+                .addEventListener("change", function (e) {
+                    const fichier = e.target.files[0];
+
+                    if (!fichier) return;
+
+                    if (fichier.type !== "application/pdf") {
+                        alert("Veuillez sélectionner un fichier PDF valide.");
+                        return;
+                    }
+
+                    // Libérer l'ancienne URL temporaire
+                    if (urlPdfLocal) {
+                        URL.revokeObjectURL(urlPdfLocal);
+                    }
+
+                    urlPdfLocal = URL.createObjectURL(fichier);
+
+                    const lecteur = new FileReader();
+
+                    lecteur.onload = async function () {
+                        const donneesPdf = new Uint8Array(this.result);
+
+                        // Mise à jour des miniatures
+                        const canvasElements =
+                            document.querySelectorAll(".pdf-couverture");
+
+                        for (const canvas of canvasElements) {
+                            await dessinerCouverture(
+                                { data: donneesPdf.slice() },
+                                canvas,
+                            );
+
+                            const lien = canvas.closest("a");
+
+                            if (lien) {
+                                lien.href = urlPdfLocal;
+                            }
+                        }
+
+                        // Mise à jour des liens des titres
+                        document
+                            .querySelectorAll(".doc-titre a")
+                            .forEach((lien) => {
+                                lien.href = urlPdfLocal;
+                            });
+
+                        // Mise à jour des boutons de téléchargement
+                        document
+                            .querySelectorAll(
+                                ".doc-action-btn[aria-label='Télécharger']",
+                            )
+                            .forEach((bouton) => {
+                                bouton.onclick = () => {
+                                    const telechargement =
+                                        document.createElement("a");
+                                    telechargement.href = urlPdfLocal;
+                                    telechargement.download = fichier.name;
+                                    telechargement.click();
+                                };
+                            });
+
+                        console.log(
+                            "PDF local chargé avec succès :",
+                            fichier.name,
+                        );
+                    };
+
+                    lecteur.readAsArrayBuffer(fichier);
+                });
+        </script>
+    </body>
+</html>
+
+
+<!-- PDF -->
