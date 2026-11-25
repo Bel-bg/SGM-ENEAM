@@ -11,7 +11,7 @@
         />
 
         <!-- Barre de recherche -->
-        <form class="navbar-recherche" action="#" method="get">
+        {{-- <form class="navbar-recherche" action="#" method="get">
             <input
                 type="search"
                 placeholder="Trouver un mémoire"
@@ -33,7 +33,7 @@
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
             </button>
-        </form>
+        </form> --}}
 
         <nav class="navbar-actions">
             <a href="{{ route('catalogue-index') }}" class="navbar-lien">
