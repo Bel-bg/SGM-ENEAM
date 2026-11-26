@@ -49,7 +49,30 @@
                 <h1 class="connexion-titre">Création de compte</h1>
                 <h2 class="connexion-sous-titre">Complétez vos informations personnelles</h2>
 
-                <form method="POST" action="{{ route('register') }}" class="connexion-formulaire" novalidate>
+                <form method="POST" action="{{ route('register.complete') }}" class="connexion-formulaire" novalidate>
+                @csrf
+                    <input type="hidden" name="token" value="{{ $invite->invitation_token }}" />
+
+                    <!-- E-mail pré-rempli en lecture seule -->
+                    <div class="connexion-champ">
+                        <label class="connexion-label">Adresse e-mail invitée</label>
+                        <input type="email"
+                            class="connexion-input"
+                            value="{{ $invite->email }}"
+                            readonly
+                            style="background-color: var(--fond-section); color: var(--texte-discret); cursor: not-allowed;" />
+                    </div>
+
+                    <!-- Rôle attribué affiché en lecture seule -->
+                    <div class="connexion-champ">
+                        <label class="connexion-label">Rôle attribué</label>
+                        <input type="text"
+                            class="connexion-input"
+                            value="{{ ucfirst(str_replace('_', ' ', $invite->roles->first()?->nom ?? '')) }}"
+                            readonly
+                            style="background-color: var(--fond-section); color: var(--texte-discret); cursor: not-allowed;" />
+                    </div>
+
                     @csrf
 
                     <!-- Nom -->
@@ -96,29 +119,6 @@
                             </p>
                         @enderror
                     </div>
-
-                    <!-- Adresse Email -->
-                    <div class="connexion-champ">
-                        <label for="email" class="connexion-label">
-                            Adresse e-mail
-                        </label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            class="connexion-input @error('email') est-invalide @enderror"
-                            value="{{ old('email') }}"
-                            autocomplete="username"
-                            required
-                        />
-
-                        @error('email')
-                            <p class="connexion-erreur" role="alert">
-                                {{ $message }}
-                            </p>
-                        @enderror
-                    </div>
-
                     <!-- Mot de passe -->
                     <div class="connexion-champ">
                         <label for="password" class="connexion-label">
