@@ -19,7 +19,7 @@ class EtudiantSeeder extends Seeder
                 'matricule'      => '10584925',
                 'name'           => 'FIODEKANHOUN',
                 'prenom'         => 'Belmonde',
-                'email'          => 'belmondefio@gmail.com',
+                'email'          => 'beldev87@gmail.com',
                 'filiere'        => 'Informatique de Gestion',
                 'niveau'         => 'Licence 3',
                 'annee_scolaire' => '2026-2027',
