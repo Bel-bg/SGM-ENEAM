@@ -17,53 +17,94 @@
     </div>
 
     <nav class="admin-sidebar-nav" aria-label="Navigation administration">
-        <span class="admin-nav-groupe">Général</span>
-
+        <!-- Dashboard -->
         <a href="{{ route('admin.dashboard') }}"
            class="admin-nav-lien {{ request()->routeIs('admin.dashboard') ? 'est-actif' : '' }}">
-            <i class="bi bi-grid-1x2"></i>
-            <span>Tableau de bord</span>
+            <span class="admin-nav-lien-gauche">
+                <i class="bi bi-house-door-fill nav-icone"></i>
+                <span>Dashboard</span>
+            </span>
         </a>
 
-        <a href="{{ route('catalogue-index') }}" class="admin-nav-lien" target="_blank">
-            <i class="bi bi-journal-bookmark"></i>
-            <span>Voir le catalogue public</span>
-        </a>
-
-        <span class="admin-nav-groupe">Gestion des Mémoires</span>
-
+        <!-- Étudiants (Accès direct) -->
         <a href="#" class="admin-nav-lien">
-            <i class="bi bi-file-earmark-check"></i>
-            <span>Mémoires à valider</span>
+            <span class="admin-nav-lien-gauche">
+                <i class="bi bi-people-fill nav-icone"></i>
+                <span>Étudiants</span>
+            </span>
+            <i class="bi bi-chevron-down nav-chevron"></i>
         </a>
 
-        <a href="#" class="admin-nav-lien">
-            <i class="bi bi-archive"></i>
-            <span>Archives &amp; Publications</span>
-        </a>
+        <!-- Mémoires (Menu déroulant) -->
+        <div class="admin-nav-accordeon">
+            <button type="button" class="admin-nav-lien" onclick="toggleAdminMenu(this)">
+                <span class="admin-nav-lien-gauche">
+                    <i class="bi bi-tag-fill nav-icone"></i>
+                    <span>Mémoires</span>
+                </span>
+                <i class="bi bi-chevron-down nav-chevron"></i>
+            </button>
+            <ul class="admin-sous-menu">
+                <li><a href="#" class="admin-sous-lien">À valider</a></li>
+                <li><a href="#" class="admin-sous-lien">Archives publiées</a></li>
+                <li><a href="{{ route('catalogue-index') }}" target="_blank" class="admin-sous-lien">Catalogue public</a></li>
+            </ul>
+        </div>
 
-        @if(Auth::user()->hasRole('admin'))
-            <span class="admin-nav-groupe">Administration Système</span>
+        <!-- Soutenances / Filières -->
+        <div class="admin-nav-accordeon">
+            <button type="button" class="admin-nav-lien" onclick="toggleAdminMenu(this)">
+                <span class="admin-nav-lien-gauche">
+                    <i class="bi bi-folder2-open nav-icone"></i>
+                    <span>Filières &amp; Années</span>
+                </span>
+                <i class="bi bi-chevron-down nav-chevron"></i>
+            </button>
+            <ul class="admin-sous-menu">
+                <li><a href="#" class="admin-sous-lien">Filières</a></li>
+                <li><a href="#" class="admin-sous-lien">Années académiques</a></li>
+            </ul>
+        </div>
 
-            <a href="#" class="admin-nav-lien">
-                <i class="bi bi-person-plus"></i>
-                <span>Membres &amp; Invitations</span>
-            </a>
-
-            <a href="#" class="admin-nav-lien">
-                <i class="bi bi-mortarboard"></i>
-                <span>Base Étudiants</span>
-            </a>
-        @endif
+        <!-- Comptes (Ouvert par défaut ou sur les pages membres, identique à la maquette) -->
+        <div class="admin-nav-accordeon {{ request()->routeIs('admin.membres.*') ? 'est-ouvert' : '' }}">
+            <button type="button" class="admin-nav-lien" onclick="toggleAdminMenu(this)">
+                <span class="admin-nav-lien-gauche">
+                    <i class="bi bi-person-circle nav-icone"></i>
+                    <span>Comptes</span>
+                </span>
+                <i class="bi bi-chevron-down nav-chevron"></i>
+            </button>
+            <ul class="admin-sous-menu">
+                @if(Auth::user()->hasRole('admin'))
+                    <li>
+                        <a href="{{ route('admin.membres.index') }}"
+                           class="admin-sous-lien {{ request()->routeIs('admin.membres.*') ? 'est-actif' : '' }}">
+                            Utilisateurs &amp; Invitations
+                        </a>
+                    </li>
+                @endif
+                <li>
+                    <a href="{{ route('profile.edit') }}" class="admin-sous-lien">
+                        Mon profil
+                    </a>
+                </li>
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="admin-sous-lien">
+                            Se Déconnecter
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </div>
     </nav>
 
-    <div class="admin-sidebar-footer">
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <button type="submit" class="admin-btn-logout">
-                <i class="bi bi-box-arrow-left"></i>
-                <span>Se déconnecter</span>
-            </button>
-        </form>
-    </div>
+    <script>
+        function toggleAdminMenu(bouton) {
+            const parent = bouton.closest('.admin-nav-accordeon');
+            parent.classList.toggle('est-ouvert');
+        }
+    </script>
 </aside>

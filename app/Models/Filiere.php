@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Filiere extends Model
 {
-    //
+    protected $fillable = [
+        'code',
+        'nom',
+    ];
 }

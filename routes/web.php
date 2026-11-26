@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminInvitationController;
 use App\Http\Controllers\Auth\EtudiantAuthController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
-/* Routes Publiques */
 Route::get('/', function () {
     return view('landing.index');
 })->name('landing-index');
@@ -18,33 +18,19 @@ Route::get('/catalogue/details', function () {
     return view('catalogue.details');
 })->name('catalogue-details');
 
-/* Authentification Étudiant (Invités uniquement) */
-Route::middleware('guest')->prefix('etudiant')->name('etudiant.')->group(function () {
-    // Étape 1 : Saisie du matricule
-    Route::get('/login', [EtudiantAuthController::class, 'showLoginForm'])->name('login');
-    Route::post('/login', [EtudiantAuthController::class, 'sendOtp'])->name('send-otp');
+Route::middleware('guest')->group(function () {
+    Route::prefix('etudiant')->name('etudiant.')->group(function () {
+        Route::get('/login', [EtudiantAuthController::class, 'showLoginForm'])->name('login');
+        Route::post('/login', [EtudiantAuthController::class, 'sendOtp'])->name('send-otp');
+        Route::get('/verify-otp', [EtudiantAuthController::class, 'showOtpForm'])->name('otp.form');
+        Route::post('/verify-otp', [EtudiantAuthController::class, 'verifyOtp'])->name('otp.verify');
+    });
 
-    // Étape 2 : Saisie du code de vérification (OTP)
-    Route::get('/verify-otp', [EtudiantAuthController::class, 'showOtpForm'])->name('otp.form');
-    Route::post('/verify-otp', [EtudiantAuthController::class, 'verifyOtp'])->name('otp.verify');
+    Route::get('/register', [AdminInvitationController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register', [AdminInvitationController::class, 'completeRegistration'])->name('register.complete');
 });
 
-/*Espace Connecté (Étudiants & Administration)*/
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-
-/* Espace Connecté (Aiguillage & Dashboards par rôle)*/
-Route::middleware('auth')->group(function () {
-    
-    // Aiguilleur central après connexion (Étudiant et Administration)
     Route::get('/dashboard', function () {
         $user = Auth::user();
 
@@ -59,7 +45,6 @@ Route::middleware('auth')->group(function () {
         abort(403, 'Aucun rôle valide attribué à ce compte.');
     })->name('dashboard');
 
-    // Espace Étudiant -> resources/views/etudiant/index.blade.php
     Route::prefix('espace-etudiant')->name('etudiant.')->group(function () {
         Route::get('/', function () {
             if (! Auth::user()->hasRole('etudiant')) {
@@ -69,7 +54,6 @@ Route::middleware('auth')->group(function () {
         })->name('dashboard');
     });
 
-    // Espace Administration -> resources/views/admin/index.blade.php
     Route::prefix('administration')->name('admin.')->group(function () {
         Route::get('/', function () {
             if (! Auth::user()->hasAnyRole(['admin', 'chef_departement', 'bibliothecaire'])) {
@@ -77,13 +61,16 @@ Route::middleware('auth')->group(function () {
             }
             return view('admin.index');
         })->name('dashboard');
+
+        Route::get('/membres', [AdminInvitationController::class, 'index'])->name('membres.index');
+        Route::post('/membres/inviter', [AdminInvitationController::class, 'store'])->name('membres.store');
+        Route::post('/membres/invitations/{user}/renvoyer', [AdminInvitationController::class, 'resend'])->name('membres.resend');
+        Route::delete('/membres/invitations/{user}', [AdminInvitationController::class, 'destroy'])->name('membres.destroy');
     });
 
-    // Profil utilisateur (Breeze)
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
 
 require __DIR__.'/auth.php';
