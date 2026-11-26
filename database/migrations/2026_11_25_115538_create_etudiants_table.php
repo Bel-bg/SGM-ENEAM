@@ -11,16 +11,25 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('etudiants', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('matricule')->unique();
-            $table->string('filiere');
-            $table->string('niveau')->nullable();
-            $table->string('annee_scolaire');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('name')->nullable()->change();
+            $table->string('password')->nullable()->change();
+
+            if (! Schema::hasColumn('users', 'prenom')) {
+                $table->string('prenom')->nullable()->after('name');
+            }
+            if (! Schema::hasColumn('users', 'otp_code')) {
+                $table->string('otp_code', 6)->nullable();
+            }
+            if (! Schema::hasColumn('users', 'otp_expires_at')) {
+                $table->timestamp('otp_expires_at')->nullable();
+            }
+            if (! Schema::hasColumn('users', 'invitation_token')) {
+                $table->string('invitation_token')->unique()->nullable();
+            }
         });
     }
+
 
 
     /**
